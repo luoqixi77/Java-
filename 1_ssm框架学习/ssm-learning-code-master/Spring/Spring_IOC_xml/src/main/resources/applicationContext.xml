@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.tiyamati.pojo.student">
+        <property name="sid" value="0001"></property>
+        <property name="sname" value="lilisi"/>
+        <property name="age" value="17"></property>
+        <property name="gender" value="女"></property>
+    </bean>
+<!--&lt;!&ndash;    <bean id="studentTwo" class="com.tiyamati.pojo.student">&ndash;&gt;-->
+<!--&lt;!&ndash;        <constructor-arg value="0002"></constructor-arg>&ndash;&gt;-->
+<!--&lt;!&ndash;        <constructor-arg value="weiweian"></constructor-arg>&ndash;&gt;-->
+<!--&lt;!&ndash;        <constructor-arg value="女"></constructor-arg>&ndash;&gt;-->
+<!--&lt;!&ndash;        <constructor-arg value="16"></constructor-arg>&ndash;&gt;-->
+<!--&lt;!&ndash;    </bean>&ndash;&gt;-->
+<!--&lt;!&ndash;    <bean id="stu" class="com.tiyamati.pojo.student">&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="sname">&ndash;&gt;-->
+<!--&lt;!&ndash;            <value><![CDATA[&ndash;&gt;-->
+<!--&lt;!&ndash;<wangwu>&ndash;&gt;-->
+<!--&lt;!&ndash;            ]]></value>&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--&lt;!&ndash;    </bean>&ndash;&gt;-->
+<!--&lt;!&ndash;    <bean id="studentThree" class="com.tiyamati.pojo.student">&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="sid" value="0001"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="sname" value="lilisi"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="age" value="16"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="gender" value="女"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="sorce" value="100"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <property name="stuClass" ref="stud"></property>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="stuClass">&ndash;&gt;-->
+<!--&lt;!&ndash;            <bean id="stuClassIn" class="com.tiyamati.pojo.stuClass">&ndash;&gt;-->
+<!--&lt;!&ndash;                <property name="sid" value="2222"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;                <property name="sname" value="2021级物联网应用技术"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;            </bean>&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--    </bean>-->
+<!--    <bean id="stud" class="com.tiyamati.pojo.stuClass">-->
+<!--        <property name="sid" value="111"></property>-->
+<!--        <property name="sname" value="2021级物联网应用技术1班"></property>-->
+<!--    </bean>-->
+
+    <bean id="studentThree" class="com.tiyamati.pojo.student">
+        <property name="sid" value="0001"></property>
+        <property name="sname" value="lilisi"></property>
+        <property name="age" value="16"></property>
+        <property name="gender" value="女"></property>
+        <property name="sorce" value="100"></property>
+        <property name="hobby">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+        <!--        <property name="stuClass" ref="stud"></property>-->
+        <property name="stuClass">
+            <bean id="stuClassIn" class="com.tiyamati.pojo.stuClass">
+                <property name="sid" value="2222"></property>
+                <property name="sname" value="2021级物联网应用技术"></property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="stuClass" class="com.tiyamati.pojo.stuClass">
+        <property name="sid" value="3333"/>
+        <property name="sname" value="2021jiwulianwang"/>
+            <property name="students">
+                <array>
+                    <ref bean="student"></ref>
+                </array>
+            </property>
+    </bean>
+<!--配置一个集合类型的bean，需要使用util的约束-->
+</beans>

@@ -1,0 +1,8 @@
+server:
+  port: 7770
+spring:
+  cloud:
+    discovery:
+      enabled: true
+    nacos:
+      server-addr: http://localhost:8848

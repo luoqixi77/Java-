@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.darling.Dao.RequisitionMapper">
+    <select id="findRequisitionList" resultType="Requisition" parameterType="com.darling.vo.RequisitionVo">
+        select r.*,mname from requisition r
+        join material m on r.mid = m.mid
+        <where>
+            <if test="rtaker != null and rtaker != ''">
+                rtaker = #{rtaker}
+            </if>
+            <if test="rstatus != null and rstatus != ''">
+                and rstatus = #{rstatus}
+            </if>
+        </where>
+        order by rid desc
+    </select>
+
+    <insert id="add" parameterType="Requisition">
+        insert into requisition(rid,mid,rstatus,rnum,rtype,rapplytime,rtaker)
+        values (#{rid},#{mid},#{rstatus},#{rnum},#{rtype},#{rapplytime},#{rtaker})
+    </insert>
+
+    <delete id="revoke" parameterType="java.lang.String">
+        delete from requisition
+        where rid = #{rid}
+    </delete>
+
+    <select id="findApproveList" resultType="Requisition" parameterType="com.darling.vo.RequisitionVo">
+        select rid,r.mid,rnum,rtaker,rapplytime,mname,utel from requisition r
+        join material m on r.mid = m.mid
+        join user u on u.uname = r.rtaker
+        <where>
+            <if test="rstatus != null and rstatus != ''">
+                rstatus = #{rstatus}
+            </if>
+        </where>
+        order by rid desc
+    </select>
+
+    <update id="updateRstatus" parameterType="Requisition">
+        update requisition
+        set rstatus = #{rstatus},rverifier = #{rverifier}
+        where rid = #{rid}
+    </update>
+
+    <update id="received" parameterType="Requisition">
+        update requisition
+        set rstatus = #{rstatus},ragent = #{ragent},rtaketime = #{rtaketime}
+        where rid = #{rid}
+    </update>
+
+    <select id="findAll" resultType="Requisition" parameterType="com.darling.vo.RequisitionVo">
+        select r.*,mname,utel from requisition r
+        join material m on r.mid = m.mid
+        join user u on u.uname = r.rtaker
+        order by rid desc
+    </select>
+
+    <insert id="give" parameterType="Requisition">
+        insert into requisition(rid,mid,rstatus,rnum,rverifier,rtype,rapplytime,rtaker)
+        values (#{rid},#{mid},#{rstatus},#{rnum},#{rverifier},#{rtype},#{rapplytime},#{rtaker})
+    </insert>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="em.Device.sensor.mapper.SerialDeviceServerMapper">
+    <insert id="insertSerial">
+        insert into db_cloud.serial_info values (id,#{ip},#{port})
+    </insert>
+    <select id="showSerial" resultType="em.Device.sensor.Dto.SerialDeviceServer">
+        select * from db_cloud.serial_info
+    </select>
+    <select id="getSerialInfo" resultType="em.Device.sensor.Dto.SerialDeviceServer">
+        select * from db_cloud.serial_info where id=#{id};
+    </select>
+</mapper>

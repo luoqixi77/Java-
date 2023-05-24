@@ -1,0 +1,22 @@
+server:
+  port: 7777
+spring:
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+  application:
+    name: cus-service
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db_cloud?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: 123456
+  main:
+    allow-circular-references: true
+
+debug: true
+

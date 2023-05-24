@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.darling.mapper.UserMapper">
+
+    <insert id="insertUser">
+        insert into one_user values(null,'admin','123456',23,'男','darling@02.com');
+    </insert>
+
+    <update id="updateUser">
+        update one_user set username='root',password='000000' where id=1;
+    </update>
+
+    <delete id="deleteUser">
+        delete from one_user where id=1;
+    </delete>
+
+<!--    resultType:设置结果类型，即查询的数据要转换为Java数据-->
+<!--    resultMap：自定义映射，处理一对一或一对多的映射关系-->
+    <select id="selectUserById" resultType="User">
+        select *from one_user where id=1;
+    </select>
+
+    <select id="selectUserAll" resultType="User">
+        select *from one_user ;
+    </select>
+
+</mapper>

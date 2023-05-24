@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>物联网智能设备远程调试与测试平台</title>
+    <link rel="stylesheet" href="../layui/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="shortcut icon" href="#"/>
+    <script type="text/javascript" src="../layui/lib/jquery-3.4.1/jquery-3.4.1.min.js" ></script>
+    <script type="text/javascript" src="../layui/lib/layui-v2.6.3/layui.js"  charset="utf-8"></script>
+    <style type="text/css">
+        .wrap {
+            width: 100%;
+            height: 100%;
+            background: url("./image/login.png") no-repeat;
+            background-size: cover;
+        }
+
+        img {
+            position: absolute;
+        }
+
+        .bgImg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .loginForm {
+            margin-left: 38%;
+            margin-top: 13%;
+            background-color: #e7e7e7;
+            width: 400px;
+            height: 380px;
+            float: left;
+            z-index: 999;
+            position: fixed;
+            opacity: 0.75;
+        }
+
+        .loginHead h2 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .uidDiv, .passwordDiv {
+            width: 300px;
+            height: 40px;
+            padding-left: 50px;
+            padding-top: 30px;
+        }
+
+        .adminInput {
+            width: 200px;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 0.5em;
+        }
+
+        .cardDiv {
+            width: 120px;
+            height: 40px;
+            padding-top: 30px;
+            float: left;
+        }
+
+        .cardInput {
+            width: 124px;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 0.5em 0em 0em 0.5em;
+        }
+
+        .codeDiv {
+            width: 100px;
+            height: 40px;
+            padding-top: 30px;
+            padding-right: 20px;
+            float: left;
+        }
+
+        .codeInput {
+            width: 80px;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 0em 0.5em 0.5em 0em;
+            /*验证码样式*/
+            font-family: Arial;
+            font-style: italic;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        i {
+            position: absolute;
+        }
+
+        .adminIcon {
+            font-size: 22px;
+            margin-top: 8px;
+            margin-left: 165px;
+        }
+
+        .inputLabel {
+            width: 80px;
+            height: 30px;
+            font-size: 16px;
+            float: left;
+            margin-left: 55px;
+            margin-top: 40px;
+        }
+
+        .inputWrap {
+            width: 400px;
+            height: 70px;
+        }
+
+        .submitDiv {
+            width: 100%;
+            height: 40px;
+            padding-left: 10px;
+            padding-top: 40px;
+            float: left;
+            text-align: center;
+        }
+
+        .submit, .submit:hover {
+            width: 100px;
+            height: 40px;
+            border-radius: 0.5em;
+            background-color: #458B74;
+            color: #ffffff;
+            letter-spacing: 5px;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <img src="../image/login.png" class="bgImg">
+    <div class="loginForm">
+        <form>
+            <div class="loginHead">
+                <h2>物联网智能设备远程调试与测试平台</h2>
+            </div>
+            <div class="inputWrap">
+                <div class="inputLabel">
+                    <label for="uidInput">账号</label>
+                </div>
+                <div class="uidDiv">
+                    <i class="layui-icon layui-icon-username adminIcon"></i>
+                    <input id="uidInput" class="layui-input adminInput" type="text" autocomplete="off"
+                           name="uid"
+                           placeholder="请输入账号">
+                </div>
+            </div>
+            <div class="inputWrap">
+                <div class="inputLabel">
+                    <label for="passwordInput">密码</label>
+                </div>
+                <div class="passwordDiv">
+                    <i class="layui-icon layui-icon-password adminIcon"></i>
+                    <input id="passwordInput" class="layui-input adminInput" type="password" name="password"
+                           placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="inputWrap">
+                <div class="inputLabel">
+                    <label for="loginCard">验证码</label>
+                </div>
+                <div class="cardDiv">
+                    <input id="loginCard" class="layui-input cardInput" autocomplete="off" type="text" name="card"
+                           placeholder="请输入验证码">
+                </div>
+                <div class="codeDiv">
+                    <input id="loginCode" class="layui-input codeInput" type="button">
+                </div>
+            </div>
+            <div class="inputWrap">
+                <div class="submitDiv">
+                    <input id="loginBtn" type="button" class="submit layui-btn layui-btn-primary" value="登录"></input>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use(['layer'], function () {
+        var layer = layui.layer;
+    })
+    $(function () {
+        // 页面初始化生成验证码
+        window.onload = createCode('#loginCode');
+        // 验证码切换
+        $('#loginCode').click(function () {
+            createCode('#loginCode');
+        });
+        // 登陆事件
+        $('#loginBtn').click(function () {
+            login();
+        });
+    });
+
+    //生成验证码
+    function createCode(codeID) {
+        var code = "";
+        var length = 4;
+        // 验证码对象
+        var objCode = $(codeID);
+        // 随机数
+        var random = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        for (var i = 0; i < length; i++) {
+            // 随机数索引
+            var index = Math.floor(Math.random() * 36);
+            code = code + random[index];
+        }
+        objCode.val(code);
+    }
+
+    // 校验空数据
+    function isEmpty(value) {
+        // 检验数据是否为空值，是则返回true；不是返回false
+        if ($.trim(value) == '' || $.trim(value).length <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // 校验数据
+    function validateInput() {
+        var uid = $('#uidInput').val();
+        var password = $('#passwordInput').val();
+        var expectCode = $('#loginCode').val();
+        var actualCode = $('#loginCard').val();
+        if (isEmpty(uid)) {
+            layer.alert("账号不能为空！");
+            return false;
+        }
+        if (isEmpty(password)) {
+            layer.alert("密码不能为空！");
+            return false;
+        }
+        if (isEmpty(actualCode)) {
+            layer.alert("验证码不能为空！");
+            return false;
+        }
+        actualCode = actualCode.toUpperCase();
+        if (actualCode != expectCode) {
+            layer.alert("验证码不对！");
+            return false;
+        }
+        return true;
+    }
+
+    // 清空输入数据
+    function clearInput() {
+        $('#uidInput').val("");
+        $('#passwordInput').val("");
+        $('#loginCard').val("");
+        $('#loginCode').click();
+    }
+
+    // 登录操作
+    function login() {
+        // 如果数据通过空值校验
+        if (validateInput()) {
+            var uid = $('#uidInput').val();
+            var password = $('#passwordInput').val();
+            var params = {"uid": uid, "password": password};
+            $.ajax({
+                type: 'post',
+                url: '/login.action',
+                dataType: 'json',//返回数据类型
+                data: JSON.stringify(params),
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data) {
+                        location.href = "/home.html";
+                    } else {
+                        layer.msg(data.msg, {icon: 5});
+                        clearInput();
+                    }
+                },
+                error: function () {
+                    layer.msg("系统错误，请稍后重试！", {icon: 2});
+                }
+            });
+        } else {
+            clearInput();
+        }
+
+    }
+</script>
+</body>
+</html>

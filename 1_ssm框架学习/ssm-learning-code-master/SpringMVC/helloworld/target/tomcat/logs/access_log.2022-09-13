@@ -1,0 +1,3 @@
+0:0:0:0:0:0:0:1 - - [13/Sep/2022:16:34:49 +0800] "GET /helloworld HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [13/Sep/2022:16:34:50 +0800] "GET /helloworld/ HTTP/1.1" 200 226 http-bio-8080-exec-3 768
+0:0:0:0:0:0:0:1 - - [13/Sep/2022:16:34:55 +0800] "GET /helloworld/hello HTTP/1.1" 200 165 http-bio-8080-exec-4 4

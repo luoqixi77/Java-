@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="annotation" />
+        <module name="proxy" />
+        <module name="spring-transaction" />
+        <module name="spring-aop" />
+        <module name="Spring_helloworld" />
+        <module name="Spring_IOC_xml" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="annotation" target="17" />
+      <module name="apring_aop" target="17" />
+      <module name="proxy" target="17" />
+      <module name="spring-aop" target="17" />
+      <module name="spring-transaction" target="17" />
+      <module name="Spring_helloworld" target="17" />
+      <module name="Spring_IOC_xml" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

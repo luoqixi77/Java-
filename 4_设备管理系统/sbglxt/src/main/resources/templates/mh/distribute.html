@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>物联网智能设备远程调试与测试平台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" href="../layui/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../layui/css/public.css" media="all">
+    <style type="text/css">
+        .layui-form-item{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <!-- 表格头部工具栏 -->
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm data-add-btn" lay-event="give">
+                    <i class="layui-icon layui-icon-add-1"></i>发放
+                </button>
+            </div>
+        </script>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs" lay-event="received">
+                <i class="layui-icon layui-icon-edit"></i>领取登记</a>
+        </script>
+
+        <!-- 添加发放任务窗口 -->
+        <div style="display: none;padding: 5px" id="giveWindow">
+            <form class="layui-form" style="width:90%;" id="dataFrm" lay-filter="dataFrm">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设备名称</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" id="mid" name="mid"/>
+                        <select name="mname" id="mname" lay-verify="required" class="layui-input"></select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">数量</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="rnum" lay-verify="number" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">领取人</label>
+                    <div class="layui-input-block">
+                        <select name="rtaker" id="rtaker" lay-verify="required" class="layui-input"></select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-row layui-col-xs12" style="margin-top: 100px;">
+                    <div style="text-align: center;margin-left: 40px">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="doSubmit">
+                            <span class="layui-icon layui-icon-add-1"></span>发布
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../layui/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table', 'layer'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer,
+            table = layui.table;
+
+        var tableIns = table.render({
+            elem: '#currentTableId',
+            url: '/mh/distribute/list',
+            toolbar: '#toolbarDemo',
+            cols: [
+                [
+                    {field: 'rid', title: '领取单号', hide: true},
+                    {field: 'mid', title: '设备编号', hide: true},
+                    {field: 'mname', minWidth: 200, title: '设备名称', align: "center"},
+                    {field: 'rnum', width: 100, title: '申请数量', align: "center"},
+                    {field: 'rapplytime', width: 110, title: '申请时间', align: "center"},
+                    {field: 'rtype', width: 100, title: '申请类型', align: "center"},
+                    {field: 'rstatus', width: 100, title: '申请进度', align: "center"},
+                    {field: 'rtaker', width: 100, title: '领取人', align: "center"},
+                    {field: 'utel', width: 120, title: '联系方式', align: "center"},
+                    {field: 'rverifier', width: 100, title: '审核人', align: "center"},
+                    {field: 'rtaketime', width: 110, title: '领取时间', align: "center"},
+                    {field: 'ragent', width: 100, title: '发放人', align: "center"},
+                    {title: '操作', width: 120, toolbar: '#currentTableBar', align: "center"}
+                ]
+            ],
+            limits: [5, 10, 20, 30, 50],
+            limit: 5,
+            page: true,
+            skin: 'line',
+            even: true,
+            done: function (res, curr, count) {
+                var that = this.elem.next();
+                // 不同状态高亮显示
+                res.data.forEach(function (item, index) {
+                    var color = "";
+                    switch (item.rstatus) {
+                        case "驳回":
+                            color = "#ef4136";
+                            break;
+                        case "已领取":
+                            color = "#45b97c";
+                    }
+                    var td = that.find(".layui-table-box tbody tr[data-index='" + index + "'] td[data-field='rstatus']");
+                    td.css("color", color);
+                });
+            }
+        });
+
+        // 监听行工具栏事件
+        table.on('tool(currentTableFilter)', function (obj) {
+            var data = obj.data;
+            var rstatus = data.rstatus;
+            if (obj.event === "received") {
+                switch (rstatus) {
+                    case "申请中":
+                        layer.msg("该申请还未审核，请先审核通过！", {icon: 2});
+                        return false;
+                        break;
+                    case "待领取":
+                        data['rstatus'] = "已领取";
+                        $.post("/mh/distribute/received.action", data, function (result) {
+                            if (result.success) {
+                                tableIns.reload();
+                                layer.msg(result.msg, {icon: 1});
+                            } else {
+                                layer.msg(result.msg, {icon: 2});
+                            }
+                        }, "json");
+                        break;
+                    case "驳回":
+                        layer.msg("该申请已被驳回，不可进行领取登记操作！", {icon: 2});
+                        return false;
+                        break;
+                    case "已领取":
+                        layer.msg("不可重复领取！", {icon: 2});
+                        return false;
+                        break;
+                }
+            }
+            return false;
+        });
+
+        var url;
+        var windowIndex;//窗口的索引
+
+        //表格头部工具栏触发事件
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            if (obj.event === 'give') {
+                windowIndex = layer.open({
+                    type: 1,
+                    title: "发放任务",
+                    area: ["400px", "450px"],
+                    content: $("#giveWindow"),
+                    success: function () {
+                        $("#dataFrm")[0].reset();
+                        loadSelect();
+                        url = "/mh/distribute/give";
+                    }
+                });
+            };
+        });
+
+        // 监听添加窗口中表单提交事件
+        form.on("submit(doSubmit)", function (data) {
+            data.field.mid=data.field.mname;
+            console.log(data.field);
+            $.post(url, data.field, function (result) {
+                if (result.success) {
+                    tableIns.reload();
+                    layer.close(windowIndex);
+                }
+                layer.msg(result.msg);
+            }, "json");
+            return false;
+        });
+
+        function loadSelect() {
+            $("#mname").empty();
+            $.ajax({
+                url:"/mh/putin/getMname.action",
+                dataType:"json",
+                type:"post",
+                success:function(res){
+                    if (res.success){
+                        var ops = res.data;
+                        $.each(ops,function(index,item){
+                            $("#mname").append(new Option(item.mname,item.mid));
+                        });
+                        form.render();
+                    }
+                }
+            });
+
+            // 加载领取人信息
+            $("#rtaker").empty();
+            $.ajax({
+                url:"/mh/distribute/getUname.action",
+                dataType:"json",
+                type:"post",
+                success:function(res){
+                    if (res.success){
+                        var ops = res.data;
+                        $.each(ops,function(index,item){
+                            $("#rtaker").append(new Option(item.uname,item.uname));
+                        });
+                        form.render();
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

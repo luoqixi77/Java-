@@ -1,0 +1,17 @@
+server:
+  port: 7773
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_cloud?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+  application:
+    name: mod-service
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  main:
+    allow-circular-references: true
+
+debug: true

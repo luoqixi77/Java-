@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luoluoli.mapper.DynamicSQLMapper">
+
+    <!--    <select id="getEmpByUser" resultType="com.luoluoli.pojo.Employee">-->
+    <!--        select * from emp where 1=1-->
+    <!--        <if test="empName!=null and empName!=''">-->
+    <!--            and emp_name=#{empName}-->
+    <!--        </if>-->
+    <!--        <if test="age!=null and age!=''">-->
+    <!--            and age=#{age}-->
+    <!--        </if>-->
+    <!--        <if test="gender!=null and gender!=''">-->
+    <!--            and gender=#{gender}-->
+    <!--        </if>-->
+    <select id="getEmpByUser" resultType="com.luoluoli.pojo.Employee">
+        -- trim:
+        -- prefix,suffix:在标签中内容的前面或后面添加指定内容
+        -- prefixOverrides，suffixOverrides：在标签的前面或后面删除指定内容
+        select * from emp
+        <trim prefix="where" suffixOverrides="and">
+            <if test="empName!=null and empName!=''">
+                emp_name=#{empName} and
+            </if>
+            <if test="age!=null and age!=''">
+                age=#{age} and
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender=#{gender}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getEmpByChoose" resultType="com.luoluoli.pojo.Employee">
+        select * from emp
+        <where>
+            <choose>
+                <when test="empName!=null and empName!=''">
+                    emp_name=#{empName}
+                </when>
+                <when test="age!=null and age!=''">
+                    and age=#{age}
+                </when>
+                <when test="gender!=null and gender!=''">
+                    and gender=#{gender}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <insert id="insertUser">
+        insert into emp values
+        <foreach collection="employees" item="emp" separator=",">
+            (null,#{emp.empName},#{emp.age},#{emp.gender},null)
+        </foreach>
+    </insert>
+<!--foreach:-->
+<!--    collection：设置要循环的数组或集合-->
+<!--    item：用一个字符串表示数组或集合中的每一个数据-->
+<!--    separator：设置每次循环的数据之间的间隔符-->
+<!--    open：循环的所有内容以什么开始-->
+<!--    close：循环的所有内容以什么结束-->
+    <delete id="deleteUser">
+        delete from emp where emp_id in
+        (
+        <foreach collection="empId" item="empId" separator=",">
+            #{empId}
+        </foreach>
+        )
+    </delete>
+</mapper>

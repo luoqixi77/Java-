@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.darling.Dao.StoreMapper">
+    <update id="updateTotal" parameterType="Store">
+        insert into store(mid,total)
+        values(#{mid},#{total})
+        on duplicate key
+        update total = total + (#{total})
+    </update>
+    <delete id="deleteStore">
+        delete from store
+        where mid in
+        <foreach collection="list" item="mid" open="(" close=")" separator=",">
+            #{mid}
+        </foreach>
+    </delete>
+
+    <select id="findStoreList" resultType="Store" parameterType="com.darling.vo.StoreVo">
+        select s.*,m.mname,m.munit,m.mspec from store s
+        join material m on s.mid = m.mid
+        <where>
+            <if test="mname != null and mname != ''">
+                m.mname like concat("%",#{mname},"%")
+            </if>
+        </where>
+        order by s.mid
+    </select>
+
+    <select id="getTotal" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select total from store
+        where mid = #{mid}
+    </select>
+</mapper>

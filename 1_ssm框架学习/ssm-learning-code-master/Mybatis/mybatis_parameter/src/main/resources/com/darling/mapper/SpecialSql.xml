@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.darling.mapper.SpecialSql">
+    <select id="SpecialSelect" resultType="User">
+--             select *from one_user where username like '%${mohu}%';
+--     select*from one_user where username like concat('%',#{mohu},'%');
+--         select*from one_user where username like "%"#{mohu}"%";
+    </select>
+    <delete id="deletes">
+        delete from one_user where id in(${ids});
+    </delete>
+    <select id="selectTableName" resultType="User">
+        select *from ${tablename};
+    </select>
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into one_user values (null,#{username},#{password},#{age},#{gender},#{email});
+    </insert>
+</mapper>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>物联网智能设备远程调试与测试平台</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" href="../../layui/lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layui/css/public.css" media="all">
+    <link rel="stylesheet" href="../../layui/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <style type="text/css">
+        .layui-table-cell {
+            text-align: center;
+            height: auto;
+            white-space: normal;
+        }
+
+        .layui-form-item {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="table-search-fieldset">
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input type="text" name="searchWord" id="searchWord" autocomplete="off"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <select name="searchKey" id="searchKey" class="layui-input">
+                                    <option value="0">按名称查</option>
+                                    <option value="1">按类别查</option>
+                                    <option value="2">按编号查</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn" lay-submit lay-filter="data-search-btn">
+                                <i class="layui-icon"></i>查 询
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+        <!-- 表格头部工具栏 -->
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm data-add-btn" lay-event="addInfo">
+                    <i class="layui-icon layui-icon-add-1"></i>添加设备信息
+                </button>
+                <button class="layui-btn layui-btn-sm data-add-btn" lay-event="addKind">
+                    <i class="layui-icon layui-icon-add-1"></i>添加类别
+                </button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete">
+                        <i class="layui-icon layui-icon-delete"></i>删除
+                </button>
+            </div>
+        </script>
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">
+                <i class="layui-icon layui-icon-edit"></i>编辑</a>
+        </script>
+
+        <script type="text/html" id="picImg">
+            <img src="{{d.mpic}}" alt="设备图片" style="width: 50px;height: 50px"/>
+        </script>
+
+        <!-- 添加和修改设备信息窗口 -->
+        <div style="display: none;padding: 5px" id="addOrUpdateWindow">
+            <form class="layui-form" style="margin-top: 10px" id="dataFrm" lay-filter="dataFrm">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设备编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="mid" id="mid" lay-verify="required" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设备名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="mname" id="mname" lay-verify="required" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设备类别</label>
+                    <div class="layui-input-block" style="width: 186px;">
+                        <select name="mkid" id="mkid" class="layui-input"></select>
+                        <input style="height: 170px;visibility: hidden">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设备图片</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="mpic" id="mpic">
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn" id="imgBtn">选择图片</button>
+                            <div class="layui-upload-list">
+                                <img class="layui-upload-img" width="150px" height="150px" id="imgPreview">
+                                <p id="imgText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">计量单位</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="munit" lay-verify="required" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">规格</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="mspec" lay-verify="required" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-row">
+                    <div style="text-align: center;">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="doSubmit">
+                            <span class="layui-icon"></span>提交
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- 添加类别窗口 -->
+        <div style="display: none;padding: 5px" id="addKindWindow">
+            <form class="layui-form" style="margin-top: 10px" id="kindFrm" lay-filter="kindFrm">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类别编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="kid" id="kid" lay-verify="required" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类别名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="kname" id="kname" lay-verify="required" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea name="knote" autocomplete="off" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-row">
+                    <div style="text-align: center;">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="doSubmit">
+                            <span class="layui-icon"></span>提交
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../../layui/lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table', 'layer',  'upload', 'element'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            upload = layui.upload,
+            element = layui.element;
+
+        var tableIns = table.render({
+            elem: '#currentTableId',
+            url: '/mh/info/list',
+            toolbar: '#toolbarDemo',
+            cols: [
+                [
+                    {type: "checkbox", width: 50},
+                    {field: 'mid', width: 180, title: 'ID', align: "center"},
+                    {field: 'mname', minWidth: 200, title: '设备名称'},
+                    {field: 'mpic', width: 200, title: '设备图片', align: "center", templet: "#picImg"},
+                    {field: 'kname', width: 150, title: '设备类别', align: "center"},
+                    {field: 'munit', width: 130, title: '计量单位', align: "center"},
+                    {field: 'mspec', width: 130, title: '规格', align: "center"},
+                    {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
+                ]
+            ],
+            limits: [5, 10, 20],
+            limit: 5,
+            page: true,
+            skin: 'line',
+            even: true,
+            done: function (res, curr, count) {
+                // 鼠标移动到图片上时放大显示
+                hoverOpenImg();
+            }
+        });
+
+        function hoverOpenImg() {
+            var imgShow = null; // tips提示
+            $('td img').hover(function () {
+                var img = "<img src='" + $(this).attr('src') + "' style='width:100%;height: 100%' />";
+                imgShow = layer.tips(img, this, {
+                    tips: [2, 'rgba(41,41,41,.5)'],
+                    area: ["350px", "350px"]
+                });
+            }, function () {
+                layer.close(imgShow);
+            });
+        }
+
+        //图片上传
+        var uploadInst = upload.render({
+            elem: '#imgBtn',
+            url: '/mh/info/uploadImage',
+            accept: 'images',
+            before: function (obj) {
+                //预读本地文件，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#imgPreview').attr('src', result);
+                });
+            },
+            done: function (res) {
+                if (res.code < 0) {
+                    return layer.msg('上传失败', {icon: 5});
+                }
+                $('#imgText').html('');
+                // 给隐藏输入框赋值，图片的url跟着表单一起提交
+                $("#mpic").attr("value", res.data.src);
+            },
+            error: function () {
+                //演示失败状态，并实现重传
+                var imgText = $('#imgText');
+                imgText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                imgText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+        /**
+         * 加载下拉菜单里的选项
+         */
+        function loadSelect(){
+            $("#mkid").empty();// 先清空select中的内容再重新加载
+            $.ajax({
+                url:"/mh/info/getOptions.action",
+                dataType:"json",
+                type:"post",
+                success:function(res){
+                    if (res.success){
+                        var ops = res.data;
+                        $.each(ops,function(index,item){
+                            // 往下拉菜单里添加元素
+                            $("#mkid").append(new Option(item.kname,item.kid));
+                        });
+                        //菜单渲染 把内容加载进去
+                        form.render();
+                    }
+                }
+            })
+        }
+
+        // 监听搜索操作
+        form.on('submit(data-search-btn)', function (data) {
+            console.log(data);
+            var obj = {};
+            switch (data.field.searchKey) {
+                case "0":
+                    obj['mname'] = data.field.searchWord;
+                    break;
+                case "1":
+                    obj['kname'] = data.field.searchWord;
+                    break;
+                case "2":
+                    obj["mid"] = data.field.searchWord;
+                    break;
+            }
+            data.field = obj;
+
+            //执行搜索重载
+            tableIns.reload({
+                where: data.field,
+                page: {
+                    curr: 1
+                }
+            });
+            return false;
+        });
+
+        function openUpdateWindow(data) {
+            windowIndex = layer.open({
+                type: 1,
+                title: "修改设备信息",
+                area: ["700px", "450px"],
+                content: $("#addOrUpdateWindow"),
+                success: function () {
+                    // 表单数据回显
+                    form.val("dataFrm", data);
+                    $("#mid").prop('disabled', 'disabled');
+                    $('#imgPreview').attr('src', data.mpic);
+                    url = "/mh/info/update";
+                    loadSelect();//加载下拉选项
+                }
+            });
+        }
+
+        function deleteMaterial() {
+            layer.confirm('确定删除吗？', {icon: 3, title: '提示'}, function (index) {
+                // 获取选中行的id，用来做后端的查询条件
+                var checkStatus = table.checkStatus('currentTableId');
+                var checkData = checkStatus.data;
+                var queryParams = [];
+                for (var i = 0; i < checkData.length; i++) {
+                    queryParams.push({"mid": checkData[i].mid});
+                }
+                var params = JSON.stringify(queryParams);
+                console.log(params);
+                // 发送ajax请求进行删除
+                $.post("/mh/info/delete", {"params": params}, function (result) {
+                    if (result.success) {
+                        tableIns.reload();
+                    }
+                    layer.msg(result.msg);
+                }, "json");
+                layer.close(index);
+            });
+        }
+
+        // 监听行工具栏事件
+        table.on('tool(currentTableFilter)', function (obj) {
+            if (obj.event === "edit") {
+                openUpdateWindow(obj.data);
+            }
+        });
+
+        var windowIndex;
+        var url;
+
+        function openAddInfoWindow() {
+            windowIndex = layer.open({
+                type: 1,
+                title: "添加设备信息",
+                area: ["700px", "450px"],
+                content: $("#addOrUpdateWindow"),
+                success: function () {
+                    $("#dataFrm")[0].reset();
+                    $("#mid").removeAttr("disabled");
+                    url = "/mh/info/add";
+                    loadSelect();//加载下拉选项
+                }
+            });
+        }
+
+        function openAddKindWindow() {
+            windowIndex = layer.open({
+                type: 1,
+                title: "添加类别",
+                area: ["350px", "350px"],
+                content: $("#addKindWindow"),
+                success: function () {
+                    $("#kindFrm")[0].reset();
+                    url = "/mh/kind/add";
+                }
+            });
+        }
+
+        //表格头部工具栏触发事件
+        table.on('toolbar(currentTableFilter)', function (obj) {
+            switch (obj.event) {
+                case 'addInfo':
+                    openAddInfoWindow();// 打开添加窗口
+                    break;
+                case 'addKind':
+                    openAddKindWindow();
+                    break;
+                case "delete":
+                    deleteMaterial();
+                    break;
+            };
+        });
+
+        // 监听添加设备窗口的表单提交事件
+        form.on("submit(doSubmit)", function (data) {
+            console.log(data);
+            $.post(url, data.field, function (res) {
+                if (res.success) {
+                    //刷新数据表格
+                    tableIns.reload();
+                    //关闭窗口
+                    layer.close(windowIndex);
+                }
+                //提示信息
+                layer.msg(res.msg);
+            }, "json");
+            //禁止页面刷新
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

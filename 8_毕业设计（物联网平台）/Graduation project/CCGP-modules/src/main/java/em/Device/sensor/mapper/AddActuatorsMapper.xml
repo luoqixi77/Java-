@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="em.Device.sensor.mapper.AddActuatorsMapper">
+    <insert id="insertAct">
+        insert into db_cloud.act_info values (#{actName},#{deviceName},#{actAddress},#{registerId1},#{registerId2},#{openId1},#{openId2},#{closeId1},#{closeId2})
+    </insert>
+
+    <resultMap id="showAllActuators" type="em.Device.sensor.Dto.Actuators">
+        <result property="deviceName" column="deviceName"/>
+        <result property="actName" column="actName"/>
+    </resultMap>
+    <select id="showAllActuators" resultMap="showAllActuators">
+        select deviceName,actName from db_cloud.act_info
+    </select>
+
+    <select id="showActuators" resultType="em.Device.sensor.Dto.Actuators">
+        select * from db_cloud.act_info where actName=#{actName}
+    </select>
+
+</mapper>

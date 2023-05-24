@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cus.Mapper.HomeMapper">
+    <resultMap id="cusResultMap" type="cus.pojo.Customer">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="role" column="role"/>
+        <result property="state" column="state"/>
+        <result property="email" column="email"/>
+    </resultMap>
+    <select id="getAllCusInfo" resultMap="cusResultMap">
+        select id,username,role,state,email from db_cloud.customer
+    </select>
+
+    <select id="getSignCusInfo" resultType="cus.pojo.Customer">
+        select * from db_cloud.customer where id =#{id}
+    </select>
+</mapper>

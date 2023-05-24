@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="helloworld" />
+        <module name="annotation" />
+        <module name="extension" />
+        <module name="restful" />
+        <module name="listener" />
+        <module name="ssm" />
+        <module name="demo" />
+        <module name="ajax" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

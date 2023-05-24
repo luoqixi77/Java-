@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dca9c7c7-58d3-42c3-b8eb-d030230464cc" name="变更" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.8.6" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\IDEA\apache-maven-3.8.6\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2GFTZPQFP7JbXS4IM981HGfY7fI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../周报/saas-java-master" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\BaiduNetdiskDownload\1 瑞吉外卖项目\1 瑞吉外卖项目\代码\day02\reggie_take_out\reggie_take_out\src\main\java\com\itheima\reggie\entity" />
+      <recent name="E:\BaiduNetdiskDownload\1 瑞吉外卖项目\1 瑞吉外卖项目\代码\day02\reggie_take_out\reggie_take_out\src\main\resources" />
+      <recent name="E:\BaiduNetdiskDownload\1 瑞吉外卖项目\1 瑞吉外卖项目\代码\day02\reggie_take_out\reggie_take_out\src\main\java\com\itheima\reggie\common" />
+      <recent name="E:\BaiduNetdiskDownload\1 瑞吉外卖项目\1 瑞吉外卖项目\代码\day02\reggie_take_out\reggie_take_out\src\main\java\com\itheima\reggie\dto" />
+      <recent name="E:\BaiduNetdiskDownload\1 瑞吉外卖项目\1 瑞吉外卖项目\代码\day02\reggie_take_out\reggie_take_out\src\main\java\com\itheima\reggie\controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\BaiduNetdiskDownload\1 瑞吉外卖项目\1 瑞吉外卖项目\代码\day02\reggie_take_out\reggie_take_out\src\main\java\com\itheima\reggie\dto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ReggieApplication">
+    <configuration name="SetmealController$FiveStarFlag" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.itheima.reggie.controller.SetmealController$FiveStarFlag" />
+      <module name="reggie_take_out" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itheima.reggie.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReggieApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="reggie_take_out" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.itheima.reggie.ReggieApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="dca9c7c7-58d3-42c3-b8eb-d030230464cc" name="变更" comment="" />
+      <created>1665983386411</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665983386411</updated>
+      <workItem from="1665983387882" duration="279000" />
+      <workItem from="1665991382306" duration="9153000" />
+      <workItem from="1666052053312" duration="14995000" />
+      <workItem from="1666163254501" duration="11067000" />
+      <workItem from="1666224158376" duration="22543000" />
+      <workItem from="1666312109580" duration="9108000" />
+      <workItem from="1666334111509" duration="6235000" />
+      <workItem from="1666405338617" duration="2590000" />
+      <workItem from="1666437514661" duration="2712000" />
+      <workItem from="1666595171377" duration="33000" />
+      <workItem from="1666595251291" duration="243000" />
+      <workItem from="1666601662429" duration="149000" />
+      <workItem from="1666687170836" duration="3724000" />
+      <workItem from="1666742611880" duration="604000" />
+      <workItem from="1666957449439" duration="831000" />
+      <workItem from="1667026602143" duration="293000" />
+      <workItem from="1667283840882" duration="9000" />
+      <workItem from="1667740973537" duration="883000" />
+      <workItem from="1667781604528" duration="23000" />
+      <workItem from="1667781644651" duration="197000" />
+      <workItem from="1667810558622" duration="17000" />
+      <workItem from="1669708441415" duration="350000" />
+      <workItem from="1669806386010" duration="223000" />
+      <workItem from="1669957488444" duration="836000" />
+      <workItem from="1676864185494" duration="785000" />
+      <workItem from="1677056637348" duration="2769000" />
+      <workItem from="1677115126372" duration="635000" />
+      <workItem from="1677157581508" duration="62000" />
+      <workItem from="1677828280572" duration="74000" />
+      <workItem from="1677828873047" duration="6000" />
+      <workItem from="1677843601626" duration="496000" />
+      <workItem from="1678087045141" duration="18000" />
+      <workItem from="1678954560597" duration="47000" />
+      <workItem from="1679975670621" duration="37000" />
+      <workItem from="1680054250723" duration="1664000" />
+      <workItem from="1680334793739" duration="1458000" />
+      <workItem from="1680505019740" duration="1199000" />
+      <workItem from="1680514039743" duration="31000" />
+      <workItem from="1680576898611" duration="15000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

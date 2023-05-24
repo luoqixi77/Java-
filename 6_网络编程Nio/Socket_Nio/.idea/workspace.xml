@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9b9cd3a7-5d4f-412c-94dc-8ec4fad91518" name="变更" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NInMRnheuOqjS8ilzob3GhjqES" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="F:/Graduation project" />
+    <property name="project.structure.last.edited" value="模块" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.3298969" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.语言默认值" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IDEA\new_code\internet\src\test\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IDEA\new_code\internet\src\main\java\Nio\ByteBuffer" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.Two">
+    <configuration name="ChannelDemo6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Nio.File.ChannelDemo6" />
+      <module name="internet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Nio.File.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Nio.File.Client" />
+      <module name="internet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Nio.File.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Two" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.Two" />
+      <module name="internet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test_3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Nio.File.test_3" />
+      <module name="internet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Nio.File.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test_4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Nio.File.test_4" />
+      <module name="internet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Nio.File.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="应用程序.test_3" />
+      <item itemvalue="应用程序.ChannelDemo6" />
+      <item itemvalue="应用程序.Client" />
+      <item itemvalue="应用程序.test_4" />
+      <item itemvalue="应用程序.Two" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.Two" />
+        <item itemvalue="应用程序.test_4" />
+        <item itemvalue="应用程序.Client" />
+        <item itemvalue="应用程序.ChannelDemo6" />
+        <item itemvalue="应用程序.test_3" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="9b9cd3a7-5d4f-412c-94dc-8ec4fad91518" name="变更" comment="" />
+      <created>1679360417801</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679360417801</updated>
+      <workItem from="1679360419006" duration="14815000" />
+      <workItem from="1679379839146" duration="2776000" />
+      <workItem from="1679446076500" duration="1702000" />
+      <workItem from="1679447795913" duration="11510000" />
+      <workItem from="1679530605620" duration="13317000" />
+      <workItem from="1679617068197" duration="7962000" />
+      <workItem from="1681963463608" duration="65000" />
+      <workItem from="1683173305623" duration="1221000" />
+      <workItem from="1683258983041" duration="8000" />
+      <workItem from="1683259511794" duration="1308000" />
+      <workItem from="1683260901661" duration="1740000" />
+      <workItem from="1683269016342" duration="47000" />
+      <workItem from="1683269089053" duration="200000" />
+      <workItem from="1683269355524" duration="56000" />
+      <workItem from="1683270959428" duration="139000" />
+      <workItem from="1683271118989" duration="268000" />
+      <workItem from="1683271407704" duration="319000" />
+      <workItem from="1683346502268" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luoqixi.mapper.DeptMapper">
+    <select id="selectUserAndDeptStepTwo" resultType="Dept">
+        select *from dept where dept_id=#{deptId};
+    </select>
+    <resultMap id="DeptAndUser" type="Dept">
+        <id column="dept_id" property="deptId"></id>
+        <result column="dept_name" property="deptName"></result>
+<!--        ofType:设置集合类型的属性中存储的数据的类型-->
+        <collection property="emps" ofType="Emp">
+            <id column="emp_id" property="empId"></id>
+            <result column="emp_name" property="empName"></result>
+            <result column="age" property="age"></result>
+            <result column="gender" property="gender"></result>
+        </collection>
+    </resultMap>
+    <select id="selectDeptAndUser" resultMap="DeptAndUser">
+        select emp.*,dept.* from emp left join dept on emp.dept_id=dept.dept_id where dept.dept_id=#{deptId};
+    </select>
+    <resultMap id="DeptAndUserStepOne" type="Dept">
+        <id column="dept_id" property="deptId"></id>
+        <result column="dept_name" property="deptName"></result>
+        <collection property="emps"
+                    select="com.luoqixi.mapper.EmpMapper.selectDeptAndUserStepTwo"
+                    column="dept_id"></collection>
+    </resultMap>
+    <select id="selectDeptAndUserStepOne" resultMap="DeptAndUserStepOne">
+        select*from dept where dept_id=#{deptId};
+    </select>
+</mapper>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.Gpcc</groupId>
+    <artifactId>CCGP</artifactId>
+    <packaging>pom</packaging>
+    <version>v1.0</version>
+    <modules>
+        <module>CCGP-test</module>
+        <module>CCGP-Customer</module>
+        <module>CCGP-modules</module>
+        <module>CCGP-application</module>
+        <module>CCGP-gateway</module>
+        <module>CCGP-api</module>
+        <module>CCGP-common</module>
+    </modules>
+
+    <name>CCGP</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.13</version>
+    </parent>
+
+    <properties>
+        <CCGP.version>v1.0</CCGP.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-cloud.version>2021.0.6</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <spring-boot-admin.version>2.5.3</spring-boot-admin.version>
+        <spring-boot-mybatis.version>2.1.1</spring-boot-mybatis.version>
+        <spring-plugin-core.version>2.0.0.RELEASE</spring-plugin-core.version>
+        <druid.version>1.2.13</druid.version>
+        <mysql.version>8.0.28</mysql.version>
+        <mybatisplus-spring-boot.version>3.3.0</mybatisplus-spring-boot.version>
+        <swagger.version>3.0.0</swagger.version>
+        <fastjson.verson>1.2.79</fastjson.verson>
+        <zookeeper.version>3.4.8</zookeeper.version>
+        <zkclient.version>0.11</zkclient.version>
+        <lombok.version>1.18.24</lombok.version>
+        <jwt.version>3.4.0</jwt.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <commons-io.version>2.7</commons-io.version>
+        <netty-version>4.1.39.Final</netty-version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!--            SpringCloud微服务-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--        SpringCloudAlibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.6.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--            mysql-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!--        Mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${spring-boot-mybatis.version}</version>
+            </dependency>
+            <!--            MybatisPlus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus-spring-boot.version}</version>
+            </dependency>
+            <!--            admin监控-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <!--            Springfox swagger官方Starter-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!--            fastjson-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.verson}</version>
+            </dependency>
+            <!--            zookeeper-->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+            <!--            zookeeper zkclient-->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+            <!--            lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>import</scope>
+            </dependency>
+            <!--            jwt-->
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+            </dependency>
+            <!--            io常用工具类-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <!--            netty-->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty-version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+        <!-- bootstrap 启动器 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

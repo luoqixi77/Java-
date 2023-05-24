@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df037d23-ed51-4925-99e9-8af36ec5f674" name="变更" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.8.6" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\IDEA\apache-maven-3.8.6\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2Lioc0ztOGwU8XdgbwBejVxauIB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="17" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/feign-api/src/main/java/cn/itcast/feign" />
+    <property name="project.structure.last.edited" value="模块" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.3298969" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IDEA\new_code\SpringCloud\cloud-demo\feign-api\src\main\java\cn\itcast\feign" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.itcast.feign.pojo" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DemoApplication (1)">
+    <configuration name="afd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="afd" />
+      <module name="demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Restemplate.test" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Restemplate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client.test" />
+      <module name="feign-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test.postTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Restemplate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Restemplate" />
+      <option name="MAIN_CLASS_NAME" value="Restemplate.test" />
+      <option name="METHOD_NAME" value="postTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="test.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="test.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="order-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itcast.order.OrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itcast.user.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication2" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itcast.user.UserApplication" />
+      <option name="VM_PARAMETERS" value="-Dserver.port=8082" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication3" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.itcast.user.UserApplication" />
+      <option name="VM_PARAMETERS" value="-Dserver.port=8083" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.DemoApplication (1)" />
+        <item itemvalue="应用程序.afd" />
+        <item itemvalue="应用程序.test (1)" />
+        <item itemvalue="JUnit.test.postTest" />
+        <item itemvalue="应用程序.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="df037d23-ed51-4925-99e9-8af36ec5f674" name="变更" comment="" />
+      <created>1676363343800</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676363343800</updated>
+      <workItem from="1676363345048" duration="2429000" />
+      <workItem from="1676372790205" duration="4561000" />
+      <workItem from="1676418908218" duration="6158000" />
+      <workItem from="1676506995748" duration="13183000" />
+      <workItem from="1676593836455" duration="4869000" />
+      <workItem from="1676804946765" duration="5423000" />
+      <workItem from="1676851157114" duration="11009000" />
+      <workItem from="1676937835168" duration="8307000" />
+      <workItem from="1677022936655" duration="11507000" />
+      <workItem from="1677057558603" duration="1739000" />
+      <workItem from="1677110869275" duration="1940000" />
+      <workItem from="1677133297038" duration="10960000" />
+      <workItem from="1677157645464" duration="692000" />
+      <workItem from="1677196909729" duration="13283000" />
+      <workItem from="1677227515531" duration="1289000" />
+      <workItem from="1677228831443" duration="2868000" />
+      <workItem from="1677399808287" duration="4744000" />
+      <workItem from="1677456402247" duration="13697000" />
+      <workItem from="1677542382312" duration="1246000" />
+      <workItem from="1677757906338" duration="1900000" />
+      <workItem from="1677808926188" duration="350000" />
+      <workItem from="1677828249934" duration="28000" />
+      <workItem from="1677828357219" duration="499000" />
+      <workItem from="1678954459884" duration="95000" />
+      <workItem from="1679573956129" duration="381000" />
+      <workItem from="1679622039747" duration="1474000" />
+      <workItem from="1679623949226" duration="924000" />
+      <workItem from="1679628991832" duration="62000" />
+      <workItem from="1679638890223" duration="24194000" />
+      <workItem from="1679822518593" duration="14131000" />
+      <workItem from="1679875449973" duration="3811000" />
+      <workItem from="1679962826102" duration="593000" />
+      <workItem from="1679964928330" duration="615000" />
+      <workItem from="1679965565777" duration="233000" />
+      <workItem from="1679970308998" duration="5011000" />
+      <workItem from="1680836495249" duration="9170000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

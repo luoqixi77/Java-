@@ -1,0 +1,39 @@
+oc:
+  #名称
+  name: 物联网智能设备远程调试与测试平台
+  #版本
+  version: V1.0
+server:
+  port: 8080
+spring:
+  datasource:
+    druid:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_shebeiguanli?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true
+    username: root
+    password: 123456
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates
+    suffix: .html
+    encoding: UTF-8
+    content-type: text/html
+    mode: HTML
+    check-template: false
+    check-template-location: false
+  main:
+    allow-circular-references: true
+  mvc:
+    static-path-pattern: /**
+#  freemarker:
+#    check-template-location: false
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.darling.pojo
+  mapper-locations: classpath:./Dao/*.xml
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
